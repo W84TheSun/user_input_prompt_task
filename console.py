@@ -8,10 +8,10 @@ def help():
 def find_suitable_words(prompt, words):
     matched = []
     regex = re.compile("^" + prompt)
-    for word_pair in words:
+    for word in words:
         match = regex.search(word[0])
         if match:
-            matched.append(match.group(1))
+            matched.append(word[0])
 
     if len(matched) > 0:
         return "\n".join(matched)
@@ -19,7 +19,7 @@ def find_suitable_words(prompt, words):
         return "Nothing found."
 
 def main():
-    words_founded = input()
+    words_founded = int(input())
     words_dictionary = {}
     prompts = []
     if 1 <= words_founded <= 10 ** 5:
@@ -28,8 +28,8 @@ def main():
             if len(word) > 15:
                 return "%s is longer than 15 letters!" % word
             if word not in words_dictionary:
-                words_dictionary[word] = freq
-    words_prompted = input()
+                words_dictionary[word] = int(freq)
+    words_prompted = int(input())
     if 1 <= words_prompted <= 15000:
         for i in range(words_prompted):
             prompt = input()
@@ -43,6 +43,7 @@ def main():
 
     for prompt in prompts:
         results = find_suitable_words(prompt, words)
+        print("")
         print(results)
         print("")
     return help()
