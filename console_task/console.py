@@ -1,6 +1,7 @@
 import operator
 import re
 
+
 def help():
     return "Usage: N [word M]"
 
@@ -18,6 +19,7 @@ def find_suitable_words(prompt, words):
     else:
         return "Nothing found."
 
+
 def main():
     words_founded = int(input())
     words_dictionary = {}
@@ -29,6 +31,8 @@ def main():
                 return "%s is longer than 15 letters!" % word
             if word not in words_dictionary:
                 words_dictionary[word] = int(freq)
+            else:
+                return "%s already in dictionary" % word
     words_prompted = int(input())
     if 1 <= words_prompted <= 15000:
         for i in range(words_prompted):
