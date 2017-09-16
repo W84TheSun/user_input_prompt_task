@@ -28,11 +28,9 @@ def main(dictionary_path='./dict.txt', port=9090):
 
                 if data:
                     resp = find_suitable_words(data, words_dictionary)
-                    resp_len = "{:05d}".format(len(resp))
-                    resp_len = str.encode(resp_len)
                     resp = str.encode(resp)
 
-                    connection.sendall(resp_len + resp)
+                    connection.sendall(resp)
         except TypeError as e:
             pass
         finally:

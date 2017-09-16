@@ -7,13 +7,16 @@ def main(hostname, port):
     server_address = (hostname, port)
     sock.connect(server_address)
 
+    # max number of results = 10 X max word len = 15
+    transmittion_len = 150
+
     while True:
         user_input = input()
         cmd, prompt = user_input.split()
         if cmd == 'get':
-            sock.send(prompt)
+            sock.send(prompt.encode('utf-8'))
 
-            guesses = sock.recv().strip()
+            guesses = sock.recv(transmittion_len).strip().decode('utf-8')
             print(guesses)
             print(" ")
         else:
