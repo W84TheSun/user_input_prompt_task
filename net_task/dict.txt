@@ -1,0 +1,6 @@
+kare 10
+kado 10
+kanojo 20
+karetachi 1
+korosu 7
+sakura 3
