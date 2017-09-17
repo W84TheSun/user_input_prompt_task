@@ -1,16 +1,6 @@
 from core.errors import RangeError
 from core import create_words_dictionary, find_suitable_words
 
-def help():
-    return """Usage: N 
-                     [word n]
-                     ... - N
-                     [word n]
-                     M
-                     [prompt]
-                     ... - M
-                     [prompt]"""
-
 
 def handle_input_lines(lines_range):
     input_list = []

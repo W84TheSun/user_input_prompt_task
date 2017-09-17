@@ -3,8 +3,9 @@ import operator
 
 from core.errors import InputError
 
+
 def create_words_dictionary(input_list):
-    words_dictionary = {}
+    words_dictionary = []
 
     for line in input_list:
         word, freq = line.split()
@@ -12,18 +13,17 @@ def create_words_dictionary(input_list):
             raise "Bad input. %s is longer than 15 letters!" % word
         if word not in words_dictionary:
             try:
-                words_dictionary[word] = int(freq)
+                words_dictionary.append([word, int(freq)])
             except ValueError as e:
                 raise InputError(
                     "Bad input. '%s' has wrong frequency parameter." % word)
         else:
             raise InputError("Bad input. %s already in dictionary." % word)
 
-    sort = sorted(words_dictionary.items(),
-                  key=operator.itemgetter(1),
-                  reverse=True)
+    alphabet = sorted(words_dictionary, key=operator.itemgetter(0))
+    by_freq = sorted(alphabet, key=operator.itemgetter(1), reverse=True)
 
-    return sort
+    return by_freq
 
 
 def find_suitable_words(prompt, words):
